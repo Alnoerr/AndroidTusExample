@@ -1,4 +1,4 @@
-package com.example.ifbest
+package com.example.tus
 
 import android.content.Context
 import android.net.Uri
@@ -27,21 +27,20 @@ sealed interface FileUploadUiState {
     data class Error(val error: Exception) : FileUploadUiState
 }
 
-class IfBestViewModel(
+class TusViewModel(
     sharedPrefsRepository: SharedPrefsRepository
 ) : ViewModel() {
     var uiState: FileUploadUiState by mutableStateOf(FileUploadUiState.Standby)
+    var paused: Boolean = true
+        private set
 
     private val client: TusClient = TusClient().apply {
         uploadCreationURL = URL("https://tusd.tusdemo.net/files")
         enableResuming(TusPreferencesURLStore(sharedPrefsRepository.tus))
-        headers = mapOf<String, String>("Authorization" to "Bearer")
     }
 
     private var fileUri: Uri? = null
     private var uploadJob: Job? = null
-    var paused: Boolean = true
-        private set
 
     fun startUpload(uri: Uri, context: Context) {
         fileUri = uri
@@ -92,9 +91,9 @@ class IfBestViewModel(
     companion object {
         val Factory = viewModelFactory {
             initializer {
-                val application = (this[APPLICATION_KEY] as IfBestApplication)
+                val application = (this[APPLICATION_KEY] as TusApplication)
                 val sharedPrefsRepository = SharedPrefsRepository(application)
-                IfBestViewModel(sharedPrefsRepository)
+                TusViewModel(sharedPrefsRepository)
             }
         }
     }

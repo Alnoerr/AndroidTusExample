@@ -1,4 +1,4 @@
-package com.example.ifbest
+package com.example.tus
 
 import android.content.Intent
 import android.net.Uri
@@ -32,8 +32,8 @@ import androidx.core.net.toUri
 import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
-fun IfBestApp(
-    viewModel: IfBestViewModel = viewModel(factory = IfBestViewModel.Factory)
+fun TusApp(
+    viewModel: TusViewModel = viewModel(factory = TusViewModel.Factory)
 ) {
     val context = LocalContext.current
 

@@ -1,4 +1,4 @@
-package com.example.ifbest.ui.theme
+package com.example.tus.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

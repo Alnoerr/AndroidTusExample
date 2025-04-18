@@ -19,6 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "ifBest"
+rootProject.name = "Tus"
 include(":app")
- 

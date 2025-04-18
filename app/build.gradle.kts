@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.ifbest"
+    namespace = "com.example.tus"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.ifbest"
+        applicationId = "com.example.tus"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
