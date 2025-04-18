@@ -25,6 +25,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
@@ -59,14 +60,14 @@ fun TusApp(
             when (uiState) {
                 is FileUploadUiState.Standby -> {
                     Text(
-                        text = "Добро пожаловать, выберите файл для загрузки",
+                        text = stringResource(R.string.welcome),
                         textAlign = TextAlign.Center,
                         style = MaterialTheme.typography.headlineSmall
                     )
                     Spacer(Modifier.height(16.dp))
                 }
                 is FileUploadUiState.Loading -> {
-                    Text("Загрузка...")
+                    Text(stringResource(R.string.uploading_in_progress))
                     Spacer(Modifier.height(16.dp))
                     LinearProgressIndicator(
                         progress = { uiState.progress },
@@ -78,13 +79,13 @@ fun TusApp(
                         Button(
                             onClick = { viewModel.resumeUpload(context) }
                         ) {
-                            Text("Продолжить")
+                            Text(stringResource(R.string.continue_uploading))
                         }
                     } else {
                         Button(
                             onClick = { viewModel.pauseUpload() }
                         ) {
-                            Text("Пауза")
+                            Text(stringResource(R.string.pause_uploading))
                         }
                     }
                 }
@@ -101,10 +102,9 @@ fun TusApp(
                             }
                         )
                     }
-                    Log.d("Result", uiState.url.toString())
                 }
                 is FileUploadUiState.Error -> {
-                    Text("Ошибка:\n${uiState.error}")
+                    Text(stringResource(R.string.error, uiState.error))
                 }
             }
             Button(
@@ -114,7 +114,7 @@ fun TusApp(
                     )
                 }
             ) {
-                Text("Выбрать файл")
+                Text(stringResource(R.string.choose_file))
             }
         }
     }

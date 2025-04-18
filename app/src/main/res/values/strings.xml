@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">Tus</string>
+    <string name="app_name">Tus Example</string>
+    <string name="welcome">Welcome, choose your file to upload!</string>
+    <string name="uploading_in_progress">Uploading…</string>
+    <string name="continue_uploading">Continue</string>
+    <string name="pause_uploading">Pause</string>
+    <string name="error">Error occurred:\n%1$s</string>
+    <string name="choose_file">Choose file</string>
 </resources>
