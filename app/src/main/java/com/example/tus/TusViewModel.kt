@@ -43,6 +43,8 @@ class TusViewModel(
     private var uploadJob: Job? = null
 
     fun startUpload(uri: Uri, context: Context) {
+        uploadJob?.cancel()
+        uploadJob = null
         fileUri = uri
         resumeUpload(context)
     }
